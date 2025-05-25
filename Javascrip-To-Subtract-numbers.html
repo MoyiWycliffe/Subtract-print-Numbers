@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Range Difference Calculator</title>
+<style>
+  body {
+    font-family: Arial, sans-serif;
+    max-width: 400px;
+    margin: 50px auto;
+    padding: 20px;
+    background: #f0f0f5;
+    border-radius: 8px;
+  }
+  input[type="number"] {
+    width: 100px;
+    padding: 5px;
+    margin: 5px 10px 20px 0;
+  }
+    .container {
+    text-align: center;
+    background: #fff;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  }
+  button {
+    padding: 7px 15px;
+    font-size: 16px;
+  }
+  #output {
+    margin-top: 20px;
+    white-space: pre-wrap;
+    background: white;
+    padding: 15px;
+    border-radius: 5px;
+    border: 1px solid #ddd;
+    min-height: 80px;
+  }
+</style>
+</head>
+<body>
+<div class="container">
+<h2>Print Numbers and Difference in Range</h2>
+
+<label for="startNum">Start:</label>
+<input type="number" id="startNum" />
+<br />
+
+<label for="endNum">End:</label>
+<input type="number" id="endNum" />
+<br />
+
+<button onclick="printDifference()">Print Difference & Numbers</button>
+<button onclick="document.getElementById('output').textContent = ''">Clear</button>
+
+<div id="output"></div>
+
+<script>
+  function printDifference() {
+    const start = parseInt(document.getElementById('startNum').value);
+    const end = parseInt(document.getElementById('endNum').value);
+    const outputDiv = document.getElementById('output');
+
+    if (isNaN(start) || isNaN(end)) {
+      outputDiv.textContent = "Please enter valid numbers.";
+      return;
+    }
+
+    if (end < start) {
+      outputDiv.textContent = "End number must be greater than or equal to Start number.";
+      return;
+    }
+
+    let difference = end - start;
+    let result = `The difference between ${end} and ${start} is: ${difference}\n\nNumbers in the range:\n`;
+
+    for (let i = start; i <= end; i++) {
+      result += i + " ";
+    }
+
+    outputDiv.textContent = result;
+  }
+</script>
+</div>
+</body>
+</html>
